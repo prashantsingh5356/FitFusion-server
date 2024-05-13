@@ -8,7 +8,7 @@ const signUpUser = async (req, res) => {
 
     res.status(200).json({ message: "SUCCESS", data: user });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: "FAILED", data: error });
   }
 };
 
@@ -22,9 +22,11 @@ const signInUser = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "SUCCESS, user found", data: doesUserExists });
+      .json({ message: "SUCCESS", data: "user found", user: doesUserExists });
   } catch (error) {
-    res.status(400).json({ message: "FAIL, user not found" });
+    res
+      .status(400)
+      .json({ message: "FAILED", data: "user not found", user: {} });
   }
 };
 
