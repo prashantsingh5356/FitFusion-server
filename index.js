@@ -6,16 +6,16 @@ dotenv.config();
 
 const port = process.env.PORT || 8080;
 
-// const DB = process.env.DB_CONNECTION.replace(
-//   "<password>",
-//   process.env.DB_PASSWORD
-// );
+const DB = process.env.DB_CONNECTION.replace(
+  "<password>",
+  process.env.DB_PASSWORD
+).replace("<username>", process.env.DB_USERNAME);
 
-// mongoose
-//   .connect(DB)
-//   .then(() => {
-//     console.log("connected to DB");
-//   })
-//   .catch((err) => console.log("Connection to DB failed: ", err));
+mongoose
+  .connect(DB)
+  .then(() => {
+    console.log("connected to DB");
+  })
+  .catch((err) => console.log("Connection to DB failed: ", err));
 
 app.listen(port, console.log(`server started at port ${port}`));
