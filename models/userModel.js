@@ -15,6 +15,15 @@ const adminUserSchema = new mongoose.Schema({
     validate: [isEmail, "Please enter valid email"],
     unique: true,
   },
+  password: {
+    type: String,
+    required: [true, "An user should have an password"],
+  },
+  signUpType: {
+    type: String,
+    enum: ["google", "apple", "normal"],
+    default: "normal",
+  },
 });
 
 const adminUsers = mongoose.model("adminusers", adminUserSchema);
